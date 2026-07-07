@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #171717;
+            --muted: #666666;
+            --border: #eaeaea;
+            --link: #000000;
+            --link-hover: #555555;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #ededed;
+            --muted: #a0a0a0;
+            --border: #2c2c2c;
+            --link: #ffffff;
+            --link-hover: #aaaaaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        header {
+            margin-bottom: 4rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff7b00, #ffae00);
+            display: inline-block;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+        
+        .theme-btn:hover {
+            color: var(--text);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .feed-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .post-item {
+            margin-bottom: 2.5rem;
+            list-style: none;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .post-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--link);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .post-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .post-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        footer {
+            margin-top: 5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="avatar"></div>
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+            </div>
+            <h1>Hi, I'm Alex.</h1>
+            <p class="bio">Writing about design, small hobbies, and whatever else catches my attention. Just a quiet corner on the internet.</p>
+        </header>
+
+        <main>
+            <h2 class="feed-title">Recent Writing</h2>
+            <ul>
+                <li class="post-item">
+                    <div class="post-meta">July 2026</div>
+                    <a href="posts/aa.html" class="post-link">Learning to love slow mornings</a>
+                    <p class="post-desc">Re-adjusting my schedule to find clarity before checking screens.</p>
+                </li>
+                <li class="post-item">
+                    <div class="post-meta">June 2026</div>
+                    <a href="#" class="post-link">A review of my favorite pocket notebook</a>
+                    <p class="post-desc">Why physical paper still beats digital capture for raw brainstorming.</p>
+                </li>
+                <li class="post-item">
+                    <div class="post-meta">May 2026</div>
+                    <a href="#" class="post-link">Fixing old mechanical keyboards</a>
+                    <p class="post-desc">An afternoon spent cleaning switches and restoring a 10-year-old board.</p>
+                </li>
+            </ul>
+        </main>
+
+        <footer>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+            <a href="#">RSS</a>
+        </footer>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 
+                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
