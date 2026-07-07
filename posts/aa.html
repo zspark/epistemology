@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning to love slow mornings - Personal Blog</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #171717;
+            --muted: #666666;
+            --border: #eaeaea;
+            --link: #000000;
+            --link-hover: #555555;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #ededed;
+            --muted: #a0a0a0;
+            --border: #2c2c2c;
+            --link: #ffffff;
+            --link-hover: #aaaaaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Nav back to home */
+        .nav-back {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+            text-decoration: underline;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        .theme-btn:hover {
+            color: var(--text);
+        }
+
+        /* Article Layout */
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.75px;
+            line-height: 1.25;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .content h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem 0;
+            letter-spacing: -0.3px;
+        }
+
+        .content blockquote {
+            border-left: 3px solid var(--border);
+            padding-left: 1.25rem;
+            color: var(--muted);
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav-back">
+            <a href="../index.html" class="back-link">&larr; Back to thoughts</a>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+        </nav>
+
+        <main>
+            <article>
+                <header>
+                    <div class="meta">Published July 7, 2026 &bull; 3 min read</div>
+                    <h1>Learning to love slow mornings</h1>
+                </header>
+
+                <div class="content">
+                    <p>For the past few years, my morning routine was non-existent. I’d wake up, immediately reach for my phone, roll out of bed to clear an emergency notification queue, and start typing out terminal configs or build requests before properly opening both eyes.</p>
+                    
+                    <p>It worked, technically. Tasks got finished. But by mid-afternoon, my processing focus was shot and the rest of the day felt like playing continuous catch-up with my own adrenaline baseline.</p>
+
+                    <h2>The Zero-Screen Rule</h2>
+                    <p>Last month, I started a simple experiment: no screens for the first thirty minutes after waking up. No checking local code compiles, no system diagnostic logs, no instant messaging channels.</p>
+
+                    <blockquote>
+                        "True structural efficiency isn't about running at maximum clock speed from the second power is applied. It's about systemic pacing."
+                    </blockquote>
+
+                    <p>Instead, I just make coffee and watch the morning light track slowly across the wall. It sounds basic, almost cliché, but the mental buffer it creates is real. By the time I actually sit down at my keyboard, my thoughts are parsed, sorted, and ready for actual intention rather than chaotic reaction.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Alex. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 
+                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
