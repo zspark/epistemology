@@ -12,12 +12,12 @@ theme = 'PaperMod'
         enabled = true
         title = "Welcome to My Site 👋"
         subtitle = "This is where I publish my latest thoughts and posts."
-        imageUrl = "https://github.com/yourusername.png" # Pulls your GitHub avatar
+        imageUrl = "https://github.com/zspark.png" # Pulls your GitHub avatar
 
     # Social icons on the home page
     [[params.socialIcons]]
         name = "github"
-        url = "https://github.com/yourusername"
+        url = "https://github.com/zspark"
     [[params.socialIcons]]
         name = "twitter"
         url = "https://twitter.com/"
